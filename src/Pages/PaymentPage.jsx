@@ -6,7 +6,7 @@ import {
   Input,
   FormLabel,
   Checkbox,
-  
+  checkpage,
   Button,
   HStack,
   Modal,
