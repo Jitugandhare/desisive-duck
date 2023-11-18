@@ -1,22 +1,17 @@
+
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { removeFromCart, updateQuantity } from '../Redux/cartReducer/action';
 import styled from 'styled-components';
 
 const Cart = () => {
-  // Redux-related hooks
   const dispatch = useDispatch();
-  const { cartItems } = useSelector((store) => ({
-    cartItems: store.cartReducer.cartItems,
-  }));
+  const { items, total } = useSelector((state) => state.cartReducer);
 
-  // Function to handle removing an item from the cart
   const handleRemoveItem = (productId) => {
     dispatch(removeFromCart(productId));
   };
 
-  // Function to handle updating the quantity of an item in the cart
   const handleUpdateQuantity = (productId, newQuantity) => {
     dispatch(updateQuantity(productId, newQuantity));
   };
@@ -24,22 +19,18 @@ const Cart = () => {
   return (
     <CartContainer>
       <h1>Your Cart</h1>
-      {cartItems.length === 0 ? (
-        <p>Your cart is empty. <Link to="/">Go shopping!</Link></p>
+      {items.length === 0 ? (
+        <p>Your cart is empty.</p>
       ) : (
         <>
-          {/* Display each item in the cart */}
-          {cartItems.map((item) => (
+          {items.map((item) => (
             <CartItem key={item.id}>
-              {/* Display Product Image */}
               <div className="cart-image">
                 <img src={item.image} alt={item.title} />
               </div>
-              {/* Display Product Details */}
               <div className="cart-details">
                 <h2>{item.title}</h2>
                 <p>${item.price}</p>
-                {/* Quantity Selector */}
                 <div className="quantity-selector">
                   <p>Quantity:</p>
                   <input
@@ -49,19 +40,13 @@ const Cart = () => {
                     onChange={(e) => handleUpdateQuantity(item.id, e.target.value)}
                   />
                 </div>
-                {/* Remove Item Button */}
                 <button onClick={() => handleRemoveItem(item.id)}>Remove</button>
               </div>
             </CartItem>
           ))}
-          {/* Display Total Price */}
           <TotalPrice>
-            <p>Total: ${cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</p>
+            <p>Total: ${total.toFixed(2)}</p>
           </TotalPrice>
-          {/* Checkout Button */}
-          <Link to="/checkout">
-            <CheckoutButton>Proceed to Checkout</CheckoutButton>
-          </Link>
         </>
       )}
     </CartContainer>
@@ -81,11 +66,6 @@ const CartContainer = styled.div`
 
   p {
     font-size: 18px;
-  }
-
-  a {
-    color: #00cc44;
-    font-weight: bold;
   }
 `;
 
@@ -153,17 +133,6 @@ const TotalPrice = styled.div`
     font-size: 20px;
     font-weight: bold;
   }
-`;
-
-const CheckoutButton = styled.button`
-  margin-top: 20px;
-  background-color: #00cc44;
-  color: white;
-  padding: 15px 30px;
-  font-size: 18px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 `;
 
 export default Cart;
