@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, updateQuantity } from '../Redux/cartReducer/action';
 import styled from 'styled-components';
@@ -46,10 +47,15 @@ const Cart = () => {
           ))}
           <TotalPrice>
             <p>Total: ${total.toFixed(2)}</p>
+            <Link to="/product_details/:id/checkout">
+            <CheckoutButton>Proceed to Checkout</CheckoutButton>
+          </Link>
           </TotalPrice>
         </>
       )}
     </CartContainer>
+
+
   );
 };
 
@@ -133,6 +139,16 @@ const TotalPrice = styled.div`
     font-size: 20px;
     font-weight: bold;
   }
+`;
+const CheckoutButton = styled.button`
+  margin-top: 20px;
+  background-color: #00cc44;
+  color: white;
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 `;
 
 export default Cart;

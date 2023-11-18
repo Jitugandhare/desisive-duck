@@ -51,7 +51,7 @@ function CheckoutPage() {
   const applyCoupon = () => {
     if (couponCode === 'save25') {
       // Apply a 25% discount
-      const discountAmount = (product.price * 25) / 100;
+      const discountAmount = (product.price * 0.25); // Use 0.25 for 25%
       setDiscount(discountAmount);
     }
   };
@@ -142,7 +142,7 @@ function CheckoutPage() {
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <p style={{ fontSize: 'large', fontWeight: '400' }}>Total:</p>
             <p style={{ fontSize: 'large', fontWeight: '400' }}>
-              {product.price - discount}
+              {isNaN(product.price) || isNaN(discount) ? 'N/A' : product.price - discount}
             </p>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -209,14 +209,6 @@ const ProductInfo = styled.div`
   img {
     max-width: 250px;
     border-radius: 5%;
-  }
-`;
-
-const Actions = styled.div`
-  text-align: center;
-  button {
-    margin: 10px;
-    padding: 10px 20px;
   }
 `;
 
