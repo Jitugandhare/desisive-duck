@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getProducts } from '../Redux/productReducer/action';
 import styled from 'styled-components';
-import StarRating from '../Components/StarRating'; // Import the StarRating component
+import StarRating from '../Components/StarRating'; 
 import ProductCart from '../Components/ProductCart';
 import { addToCart } from '../Redux/cartReducer/action';
 import { Footer } from '../Components/Footer/Footer';

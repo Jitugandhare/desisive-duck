@@ -39,6 +39,9 @@ const Footer = () => {
     setMail({ ...email, [name]: value });
   };
 
+  const handleSubscribe=()=>{
+    alert(`You have subscribed`)
+  }
 
   return (
     <Box>
@@ -80,6 +83,7 @@ const Footer = () => {
                 position="absolute"
                 top="1"
                 right="0"
+                onClick={handleSubscribe}
               >
                 SUSCRIBE
               </Button>
@@ -167,13 +171,13 @@ const Footer = () => {
             >
               <Stack>
                 {/* <Text>About Shopcart</Text> */}
-                <Text>About Shopcart</Text>
+                <Text>About OnFlick</Text>
                 <Text>Careers</Text>
                 <Text>News and Blog</Text>
                 <Text>Help</Text>
                 <Text>Press Center</Text>
                 <Text>Shop By Location</Text>
-                <Text>Shopcart Brands</Text>
+                <Text>OnFlick Brands</Text>
                 <Text>Affiliate & Partners</Text>
                 <Text>Ideas & Guides</Text>
               </Stack>

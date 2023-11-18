@@ -47,18 +47,65 @@ const SignInAndSignUp = ({onClose,isOpen}) => {
   }
   
 
-  const loginSubmit = () => {
+  // const loginSubmit = () => {
   
 
+  //   dispatch(login(loginData))
+  //     .then((res) => {
+  //       if(res.data.id==="admin1234@gmail.com" && res.data.password==="admin@1234"){
+  //         nvigate("/admin")
+  //       }
+  //      else if (res.data.password === loginData.password) {
+  //         dispatch({ type: LOGIN_SUCSESS, payload:res.data });
+  //         localStorage.setItem("flickUser", JSON.stringify({isAuthFlick:true, id:res.data.id}));
+
+  //         toast({
+  //           title: "Sign In Successfully!",
+  //           position: "top-center",
+  //           status: "success",
+  //           duration: 2000,
+  //           isClosable: true,
+  //         });
+          
+  //         onClose();
+          
+  //       }
+  //       else {
+          
+  //         toast({
+  //           title: "Password do not match",
+  //           position: "top-center",
+  //           status: "error",
+  //           duration: 2000,
+  //           isClosable: true,
+  //         })
+  //        // console.log("not password matched")
+  //       }
+  //     }).catch((error) => {
+  //       dispatch({type: LOGIN_FAILURE}); 
+  //       toast({
+  //         title: "Account Not Found",
+  //         description: "Create a new account",
+  //         position: "top-center",
+  //         status: "error",
+  //         duration: 2000,
+  //         isClosable: true,
+  //       })
+  //     })
+
+
+  // }
+
+
+  const loginSubmit = () => {
     dispatch(login(loginData))
       .then((res) => {
-        if(res.data.id==="admin1234@gmail.com" && res.data.password==="admin@1234"){
-          nvigate("/admin")
-        }
-       else if (res.data.password === loginData.password) {
-          dispatch({ type: LOGIN_SUCSESS, payload:res.data });
-          localStorage.setItem("flickUser", JSON.stringify({isAuthFlick:true, id:res.data.id}));
-
+        if (res.data.id === "admin1234@gmail.com" && res.data.password === "admin@1234") {
+          nvigate("/admin");
+        } else if (res.data.password === loginData.password) {
+          dispatch({ type: LOGIN_SUCSESS, payload: res.data });
+          localStorage.setItem("flickUser", JSON.stringify({ isAuthFlick: true, id: res.data.id }));
+  
           toast({
             title: "Sign In Successfully!",
             position: "top-center",
@@ -66,23 +113,20 @@ const SignInAndSignUp = ({onClose,isOpen}) => {
             duration: 2000,
             isClosable: true,
           });
-          
+  
           onClose();
-          
-        }
-        else {
-          
+        } else {
           toast({
             title: "Password do not match",
             position: "top-center",
             status: "error",
             duration: 2000,
             isClosable: true,
-          })
-         // console.log("not password matched")
+          });
         }
-      }).catch((error) => {
-        dispatch({type: LOGIN_FAILURE}); 
+      })
+      .catch((error) => {
+        dispatch({ type: LOGIN_FAILURE });
         toast({
           title: "Account Not Found",
           description: "Create a new account",
@@ -90,31 +134,28 @@ const SignInAndSignUp = ({onClose,isOpen}) => {
           status: "error",
           duration: 2000,
           isClosable: true,
-        })
-      })
-
-
-  }
+        });
+      });
+  };
+  
   const registerSubmit = (e) => {
     e.preventDefault();
-    console.log("abc")
+  
     dispatch(register(registerdData))
-    .then((res) => {
-      console.log(res);
-      dispatch({type:SIGNUP_SUCCESS});
-      toast({
-        title: "Account Created Successfully.",
-        position: "top-center",
-        status: "success",
-        duration: 2000,
-        isClosable: true,
-      });
-      setRegiteredData(intialRegisteredData);
-      setTabIndex(0);
-    })
+      .then((res) => {
+        dispatch({ type: SIGNUP_SUCCESS });
+        toast({
+          title: "Account Created Successfully.",
+          position: "top-center",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+        });
+        setRegiteredData(intialRegisteredData);
+        setTabIndex(0);
+      })
       .catch((err) => {
-        console.log(err)
-        dispatch({type:LOGIN_FAILURE})
+        dispatch({ type: LOGIN_FAILURE });
         toast({
           title: "Something went wrong!",
           position: "top-center",
@@ -122,8 +163,38 @@ const SignInAndSignUp = ({onClose,isOpen}) => {
           duration: 2000,
           isClosable: true,
         });
-      })
-  }
+      });
+  };
+  
+  // const registerSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("abc")
+  //   dispatch(register(registerdData))
+  //   .then((res) => {
+  //     console.log(res);
+  //     dispatch({type:SIGNUP_SUCCESS});
+  //     toast({
+  //       title: "Account Created Successfully.",
+  //       position: "top-center",
+  //       status: "success",
+  //       duration: 2000,
+  //       isClosable: true,
+  //     });
+  //     setRegiteredData(intialRegisteredData);
+  //     setTabIndex(0);
+  //   })
+  //     .catch((err) => {
+  //       console.log(err)
+  //       dispatch({type:LOGIN_FAILURE})
+  //       toast({
+  //         title: "Something went wrong!",
+  //         position: "top-center",
+  //         status: "error",
+  //         duration: 2000,
+  //         isClosable: true,
+  //       });
+  //     })
+  // }
 
   
 
