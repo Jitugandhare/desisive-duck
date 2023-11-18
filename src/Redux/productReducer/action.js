@@ -7,7 +7,7 @@ export const getProducts = (parameter) => (dispatch) =>{
         params: parameter
     })
     .then((res)=>{
-        if(res.data.length == 0){
+        if(res.data.length === 0){
             dispatch({type: END_OF_PRODUCT_LIST})
         }else{
             dispatch({type:GET_SUCCESS, payload:res.data})
