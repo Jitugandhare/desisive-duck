@@ -221,10 +221,12 @@ function Navbar() {
           }
           <QTYDIV num={wishlist.length}>{wishlist.length}</QTYDIV>
         </ICONDIV>
-        <ICONDIV>
-          <HiOutlineShoppingBag style={{fontSize:"1.7rem"}}/>
-          <QTYDIV num={items.length}>{items.length}</QTYDIV>
-        </ICONDIV>
+        <Link to="/cart">
+      <ICONDIV>
+        <HiOutlineShoppingBag style={{ fontSize: '1.7rem' }} />
+        <QTYDIV num={items.length}>{items.length}</QTYDIV>
+      </ICONDIV>
+    </Link>
       </DIVLOGO>
     </DIV>
       <SignInAndSignUp isOpen={isOpen} onClose={onClose}/>

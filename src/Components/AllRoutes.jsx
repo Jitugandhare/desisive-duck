@@ -12,6 +12,7 @@ import LoginPage from './LoginPage';
 import CheckoutPage from '../Pages/CheckoutPage';
 
 import AdminPage from '../Pages/AdminPage';
+import Cart from './Cart';
 
 const AllRoutes = () => {
   return (
@@ -24,6 +25,7 @@ const AllRoutes = () => {
         <Route path='/product_details/:id/checkout/payment' element={<PaymentPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/ProductList' element={<ProductList />} />
+        <Route path='/cart' element={<Cart />} /> 
 
         <Route path="/admin" element={<AdminPage />}></Route>
 
