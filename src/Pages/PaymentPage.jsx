@@ -65,6 +65,12 @@ const PaymentPage = () => {
     setBill(items);
   }, []);
 
+
+
+const handleUpi=()=>{
+  alert(`Your Product is Placed`)
+}
+
   const handleSubmitForm = (e) => {
     e.preventDefault();
     if (!name || !cardNum || !cvv || !month || !year) {
@@ -304,7 +310,9 @@ const PaymentPage = () => {
                 bg="pink.500"
                 _hover={{
                   bg: "pink.200",
+                  
                 }}
+                onClick={handleUpi}
               >
                 Pay Now
               </Button>
