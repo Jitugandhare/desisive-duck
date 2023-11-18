@@ -66,10 +66,12 @@ const PaymentPage = () => {
   }, []);
 
 
+  const handleUpiPayment = () => {
+    alert(`Your Product is Placed via UPI`);
+    
+    setStatus(true);
+  };
 
-const handleUpi=()=>{
-  alert(`Your Product is Placed`)
-}
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
@@ -290,82 +292,35 @@ const handleUpi=()=>{
           <FormLabel p="10px" color="white" bg="pink.500">
             UPI
           </FormLabel>
-          <Box>
-            <HStack>
-              <Image
-                src="https://cdn-icons-png.flaticon.com/512/270/270799.png?w=740&t=st=1683531867~exp=1683532467~hmac=c33853ef2dffd7dd06be7379621e7f0e136565092f237d9bca174767fd8fb224"
-                width="50px"
-                borderRadius="50%"
-              />
-              <Input
-                ml="30px"
-                type="number"
-                placeholder="Enter UPI ID"
-                w="30%"
-                value={upi}
-                onChange={(e) => setUpi(e.target.value)}
-              />
-              <Button
-                color="green"
-                bg="pink.500"
-                _hover={{
-                  bg: "pink.200",
-                  
-                }}
-                onClick={handleUpi}
-              >
-                Pay Now
-              </Button>
-            </HStack>
-            <HStack mt="20px">
-              <Image
-                src="https://cdn-icons-png.flaticon.com/512/825/825454.png?w=740&t=st=1683532131~exp=1683532731~hmac=bb1126fbad4f895b4b4a3b586a6ffba13b903c34ca6c89f30b9117f86354b5ca"
-                width="50px"
-                borderRadius="50%"
-              />
-              <Input
-                ml="30px"
-                type="number"
-                placeholder="Enter UPI ID"
-                w="30%"
-                value={upi}
-                onChange={(e) => setUpi(e.target.value)}
-              />
-              <Button
-                color="green"
-                bg="pink.500"
-                _hover={{
-                  bg: "pink.200",
-                }}
-              >
-                Pay Now
-              </Button>
-            </HStack>
-            <HStack mt="20px">
-              <Image
-                src="https://cdn-icons-png.flaticon.com/512/196/196566.png?w=740&t=st=1683532246~exp=1683532846~hmac=15e1bff948042d30147dcb7b74079d842179146776d00939059556ed755dfd23"
-                width="50px"
-                borderRadius="50%"
-              />
-              <Input
-                ml="30px"
-                type="number"
-                placeholder="Enter UPI ID"
-                w="30%"
-                value={upi}
-                onChange={(e) => setUpi(e.target.value)}
-              />
-              <Button
-                color="green"
-                bg="pink.500"
-                _hover={{
-                  bg: "pink.200",
-                }}
-              >
-                Pay Now
-              </Button>
-            </HStack>
-          </Box>
+
+          {/* UPI Option 1 */}
+          <HStack mt="20px">
+            <Image
+              src="https://cdn-icons-png.flaticon.com/512/196/196566.png?w=740&t=st=1683532246~exp=1683532846~hmac=15e1bff948042d30147dcb7b74079d842179146776d00939059556ed755dfd23"
+              width="50px"
+              borderRadius="50%"
+            />
+            <Input
+              ml="30px"
+              type="text"
+              placeholder="Enter UPI ID"
+              w="30%"
+              value={upi}
+              onChange={(e) => setUpi(e.target.value)}
+            />
+            <Button
+              color="green"
+              bg="pink.500"
+              _hover={{
+                bg: "pink.200",
+              }}
+              onClick={handleUpiPayment}
+            >
+              Pay Now
+            </Button>
+          </HStack>
+
+          {/* Add more UPI options if needed */}
         </Box>
       </Box>
     </Flex>
